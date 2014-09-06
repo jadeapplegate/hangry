@@ -20,7 +20,43 @@ body {
 
 #out {
   width: 100%;
-  height: 450px;
+  height: 100%;
   border: 1px solid #7f8c8d  ;
   margin-top: 60px;
+}
+
+.title {
+  color: #EB5624;
+  text-align: center;
+  font-size: 20px;
+  font-family: Tahoma, Geneva, sans-serif;	
+  padding: 15px;
+
+}
+
+.bg{
+  width: 1200px;
+  height: 568px;
+  background-color: #290f1a;
+  margin: 50px auto auto;
+  padding: 0;
+}
+
+.float{
+  position:relative;
+  top:20%;
+  height: 80px;
+  display: flex;
+  padding: 0;
+  align-items:stretch;
+}
+
+.btn{
+  max-width: 286px;
+  align-content:center;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 30px;
+  background-color: #EB5624;
+  border: none;
 }
