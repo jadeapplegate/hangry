@@ -1,2 +1,36 @@
 
 <p><button id = "hangry" onclick="geoFindMe()">I'm hangry!!</button></p>
+<script>
+
+function geoFindMe() {
+var output = document.getElementById("out");
+
+if (!navigator.geolocation){
+  output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+  return;
+}
+
+function success(position) {
+  var latitude  = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  window.location.href="/results?lat=" + latitude + "&long=" + longitude
+  
+  // var img = new Image();
+  // img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+
+  // output.appendChild(img);
+};
+
+function error() {
+  output.innerHTML = "Unable to retrieve your location";
+};
+
+output.innerHTML = "<p>Locating…</p>";
+
+navigator.geolocation.getCurrentPosition(success, error);
+}
+
+$("#hangry").click(geoFindMe);
+</script>
+
+<div id="out"></div>

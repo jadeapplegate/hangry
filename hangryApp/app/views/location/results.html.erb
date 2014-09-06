@@ -2,5 +2,42 @@
 <%= @address %>
 <%= @lat %>
 <%= @long %>
+<script>
+$(function (){
+	var mapOptions = {
+    center: new google.maps.LatLng(37.776616, -122.416972),
+    zoom: 13,
+    scrollwheel: false,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill"},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"color":"#7dcdcd"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]}]
+  };
+  var map = new google.maps.Map(document.getElementById("out"),
+  mapOptions);
 
+  // var loadGeo = function() {
+  //     var url = "<a href=/results" +"?lat=" + <%= @lat %> + "&long=" + <%= @long %> + ">" + "</a>";
+  //     $.ajax(url, {
+  //       type: 'get'
+  //     }).success(function(data) {
+  //       for (var i in data) {
+  //         addPin(, data[i].long, data[i].name, data[i].address);
+  //       }
+  //     });
+  //   };
+  //   loadGeo();
+
+    function addPin(lat, long) {
+      var loc = new google.maps.LatLng(lat, long);
+      console.log(loc);
+      var newMarker = new google.maps.Marker({
+        position: loc,
+        map: map,
+        icon: "http://i.imgur.com/xYtLJ5D.png",
+        animation: google.maps.Animation.DROP,
+        title: name
+      });
+    }
+      addPin(<%= @lat %>,<%= @long %>)
+});
+</script>
 <div id="out"></div>
